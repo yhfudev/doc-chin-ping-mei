@@ -1,0 +1,260 @@
+%# -*- coding: utf-8 -*-
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+% vim:ts=4:sw=4
+%
+% 以上设定默认使用 XeLaTex 编译，并指定 Unicode 编码，供 TeXShop 自动识别
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\catcode`@=11
+\ifx\cndocStoryRevision\@undefined
+\ifx\eTeXrevision\@undefined
+  \errmessage{eTeX required to use this package}
+\fi
+\def\cndocStoryRevision{2014.08.30.}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{calc}
+
+% for memoir
+%\setstocksize{121mm}{89mm}
+%\settrimmedsize{\stockheight}{\stockwidth}{*}
+%\setheadfoot{\baselineskip}{0mm}
+%\setheaderspaces{*}{3mm}{*}
+%\setlrmarginsandblock{2mm}{2mm}{*}
+%\setulmarginsandblock{1mm+\headheight+\headsep}{3mm}{*}
+%\checkandfixthelayout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\parskip           \z@
+\clubpenalty      -\@m
+\widowpenalty      \z@
+\interlinepenalty -\@m
+
+\raggedbottom
+
+
+
+\newcommand\titlematter{%
+  \cleardoublepage
+  \@mainmatterfalse
+  \pagestyle{empty}%
+  \pagenumbering{Alph}}
+
+\comments{
+
+\renewcommand\frontmatter{%
+  \cleardoublepage
+  \@mainmatterfalse
+  \pagestyle{main}%
+  \pagenumbering{Roman}}
+
+\renewcommand\mainmatter{%
+  \cleardoublepage
+  \@mainmattertrue
+  \pagestyle{main}%
+  \pagenumbering{arabic}}
+
+\renewcommand\backmatter{%
+  \clearpage
+  \@mainmatterfalse}
+
+}
+
+\newcommand\fillinner{%
+  \if@twoside
+    \ifodd\c@page\raggedleft\else\raggedright\fi
+  \else
+    \raggedleft
+  \fi}
+\newcommand\fillouter{%
+  \if@twoside
+    \ifodd\c@page\raggedright\else\raggedleft\fi
+  \else
+    \raggedright
+  \fi}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\titleformat{\chapter}[hang]{\centering\LARGE\bfseries}{\chaptername}{1em}{}
+\renewcommand{\thechapter}{\chinese{chapter}}
+\renewcommand{\chaptername}{第\thechapter 囘}
+
+%\renewcommand\contentsname{目\KG 录}
+\renewcommand{\contentsname}{目\quad 錄}
+
+
+%\titleformat{\chapter}[display]{\Large\bfseries \titlerule[.8pt]}{第\chinese{chapter}囘}{0pt}{\titlerule[.8pt] \hfill}
+%\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+%\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+
+
+
+
+
+
+\newdimen\ruleheight
+\ruleheight=.8\p@
+\renewcommand\setheadrule[2][2mm]{%
+  \ifdim#1=\z@
+    \let\makeheadrule\@empty
+  \else
+    \def\makeheadrule{\rule[-#1]{\linewidth}{#2}}%
+  \fi}
+
+
+\newpagestyle{main}[\sffamily\small]{%
+  \sethead[\rmfamily\bfseries\@cdot\enskip\thepage\enskip\@cdot]
+          [\mydoctitle ]
+          [\ifthechapter{\chaptername}{}]
+          {\chaptertitle}
+          {}
+          {\rmfamily\bfseries\@cdot\enskip\thepage\enskip\@cdot}%
+  \setfoot{}{}{}%
+  \setheadrule\ruleheight}
+
+%\renewpagestyle{plain}{}
+\pagestyle{main}
+
+
+\newpagestyle{special}{
+    \sethead{}{}{\rmfamily\bfseries\@cdot\enskip\thepage\enskip\@cdot}
+    \setfoot{}{}{}\headrule}
+
+%\pagestyle{special}
+
+
+
+
+
+
+\def\@chapter[#1]#2{%
+  \ifnum \c@secnumdepth >\m@ne
+    \if@mainmatter
+      \refstepcounter{chapter}%
+      \typeout{\chaptername}%
+      \addcontentsline{toc}{chapter}
+        {\protect\numberline{\thechapter}#1}%
+    \else
+      \addcontentsline{toc}{chapter}{#1}%
+    \fi
+  \else
+    \addcontentsline{toc}{chapter}{#1}%
+  \fi
+  \chaptermark{#1}%
+  \addtocontents{lof}{\protect\addvspace{10\p@}}%
+  \addtocontents{lot}{\protect\addvspace{10\p@}}%
+  \if@twocolumn
+    \@topnewpage[\@makechapterhead{#2}]%
+  \else
+    \@makechapterhead{#2}%
+  \@afterheading
+  \fi}
+
+
+
+
+\titleformat{\chapter}[display]
+            {\zihao{3}\fzzhysong\ifthechapter{\fillinner}{\filcenter}}
+            {\fzltheib\fillouter\zihao{-2}\chaptername\\[-2\p@] \titlerule[\ruleheight]\addvspace{-\baselineskip}}
+            {\z@}
+            {}
+
+\titlespacing*{name=\chapter,numberless}
+              {\z@}{-10\p@}{2\baselineskip-\ccwd}
+\titlespacing*{\chapter}
+              {\z@}{-13\p@}{2\baselineskip-\ccwd}
+
+
+
+
+\comments{
+
+\newcommand\raisetext[2][.5\baselineskip]{\raisebox{#1}[\z@][\z@]{#2}}
+
+\newcount\toc@cnt@
+\chardef\toc@num@=20
+\newdimen\toc@num@wid
+\toc@num@wid=5\ccwd
+\renewcommand{\numberline}[1]{\CTEXsetfont
+  \settowidth\@tempdima{#1}%
+  \global\advance\toc@cnt@ \@ne\relax
+  \ifnum \toc@cnt@ >\toc@num@\relax
+    \def\toc@cmd@{\let\CJKglue\hfill}%
+    \@tempdima=\toc@num@wid
+  \else
+    \let\toc@cmd@\relax
+  \fi
+  \raisetext[-.5\baselineskip]{\hb@xt@\@tempdima{\toc@cmd@\@cftbsnum #1\@cftasnum}}%
+  \advance\@tempdima\ccwd
+  \@cftasnumb}
+\cftsetindents{chapter}{\z@}{\z@}
+\setlength\cftbeforechapskip{\z@}
+\renewcommand\cftdot{\raisetext{\@cdot}}
+\renewcommand\cftdotsep{3.5}
+\renewcommand\cftchapfont{\fzwkai}
+\renewcommand\cftchappresnum{\fzzhdxian}
+\renewcommand\cftchapaftersnumb{\kern\ccwd\def\KG{\\*}\global\hangindent=\@tempdima}
+\renewcommand\cftchapleader{\cftsecleader}
+\renewcommand\cftchappagefont{\rmfamily}
+\renewcommand\cftchapfillnum[1]{\enspace\cftchapleader
+  \nobreak\raisetext{\cftchappagefont #1}\cftchapafterpnum\par}
+
+\renewenvironment{quote}{\CTEXindent
+    \@beginparpenalty\@m\relax
+    \list{}{%
+      \labelwidth\z@
+      \labelsep\z@
+      \leftmargin\parindent
+      \parsep\parskip
+      \itemsep\z@
+      \topsep\z@
+      \partopsep\parskip
+      \listparindent\parindent
+      \itemindent\listparindent
+      \advance\itemindent\labelsep}%
+    \item\relax\itshape}
+  {\endlist\ignorespacesafterend}
+
+\renewrobustcmd*{\[}{\begin{quote}\obeylines}
+\renewrobustcmd*{\]}{\end{quote}}
+
+\newcommand\named[1]{%
+  \unskip\nobreak\hfill\allowbreak\null\nobreak\hfill\quad\hbox{\normalfont ——\,#1}}
+
+%\newcommand\named[1]{{\unskip\nobreak\hfil\penalty50\quad\hbox{}\nobreak\hfill
+%  \normalfont ——\,#1\parfillskip\z@ \finalhyphendemerits\z@ \par}}
+
+
+\newcommand\cipaim[1]{{\upshape\fzzhdxian 【#1】}\enspace\ignorespaces}
+
+\def\textuni#1{\char"#1}
+
+\def\textJinXia {\makebox[\ccwd]{\scalebox{.85}[.9]{釒}\kern-.55em\scalebox{.65}[1]{夏}}}
+\def\textShiJie {\makebox[\ccwd]{\scalebox{.9}[1]{飠}\kern-.5em\scalebox{.6}[1]{皆}}}
+\def\textShiHe  {\makebox[\ccwd]{\scalebox{.9}[1]{飠}\kern-.47em\scalebox{.58}[1]{禾}}}
+\def\textSiTang {\makebox[\ccwd]{\scalebox{.6}[1]{糹}\kern-.3em\scalebox{.7}[1]{堂}}}
+\def\textShiDian{\makebox[\ccwd]{砷\kern-.6em\fboxsep\z@\colorbox{white}{\kern-.1em\scalebox{.7}[1]{店}}}}
+\def\textShiFou {\makebox[\ccwd]{砷\kern-.6em\fboxsep\z@\colorbox{white}{\kern-.1em\scalebox{.7}[1]{否}}}}
+\def\textHuoKua {\makebox[\ccwd]{灿\kern-.6em\fboxsep\z@\colorbox{white}{\kern-.1em\scalebox{.7}[1]{夸}}}}
+
+
+
+}%comments
+
+
+
+\usepackage[leftmargin=22pt,indentfirst=true,font=itshape,vskip=0pt]{quoting}
+\let\origquote\quoting
+\let\endorigquote\endquoting
+\renewenvironment{quoting}{%
+\origquote
+\obeylines
+}%
+{\endorigquote}

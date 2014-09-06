@@ -1,0 +1,171 @@
+%# -*- coding: utf-8 -*-
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+% vim:ts=4:sw=4
+%
+% 以上设定默认使用 XeLaTex 编译，并指定 Unicode 编码，供 TeXShop 自动识别
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% setup fonts
+\newcommand\myfontdir{fonts/}
+
+\newcommand\mycjkfzqk{fzqkbyss-1.00.ttf}
+\newcommand\mycjknoto{SourceHanSans-Medium.otf}
+\newcommand\mycjkkhangxi{khangxidict-1.023-full.otf}
+
+\newcommand\mycjkming{mingliu-3.00-20923.ttc}
+\newcommand\mycjkmingext{mingliub-7.01.ttc}
+\newcommand\mycjknotol{SourceHanSans-Light.otf}
+
+
+\newcommand\myFntAdobeKaiti{AdobeKaitiStd-Regular.otf}%{Adobe Kaiti Std}
+\newcommand\myFntAdobeHeiti{AdobeHeitiStd-Regular.otf}%{Adobe Heiti Std}
+\newcommand\myFntAdobeFangsong{AdobeFangsongStd-Regular.otf}%{Adobe Fangsong Std}
+\newcommand\myFntAdobeMing{AdobeMingStd-Light.otf}%{Adobe Ming Std}
+\newcommand\myFntAdobeSong{AdobeSongStd-Light.otf}%{Adobe Song Std}
+
+
+
+\newcommand\mytestfontbbb{Adobe Kaiti Std}
+
+\newcommand\FntNameFzbwksgb{\mytestfontbbb}  % 方正北魏楷书
+\newcommand\FntNameFzzdxgb{\mytestfontbbb}
+\newcommand\FntNameFzzdx{\mytestfontbbb} % 方正中等线
+\newcommand\FntNameFzlth{Adobe Heiti Std}         % 方正兰亭黑扁
+\newcommand\FntNameFzydh{\mytestfontbbb}          % 方正韵动中黑
+\newcommand\FntNameFzys{Adobe Heiti Std}             % 方正中雅宋
+\newcommand\FntNameFzqt{\mytestfontbbb}                  % 方正启体
+\newcommand\FntNameFzsxslk{\mytestfontbbb}% 方正苏新诗柳楷简体
+
+
+
+%\newcommand\FntNameFzqt{FZQiTi-S14}                  % 方正启体
+\renewcommand\FntNameFzqt{Adobe Kaiti Std}                  % 方正启体
+
+% 配置: 使用旧明体作为缺省字体，辅助用新明体补全字形
+\newcommand\mytestfont{\mycjkming}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+\newcommand\mycjkfallbackfontA{\mycjkmingext}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+\newcommand\mycjkfallbackfontB{\mycjkkhangxi}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+\newcommand\mycjkfallbackfontE{\myFntAdobeFangsong}%{Noto Sans S Chinese}%{Adobe Heiti Std}
+
+\newcommand\mycjkboldfont{\mytestfont}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+\newcommand\mycjkitalicfont{\mytestfont}%{FZKaiT-Extended}%{全字庫正楷體}
+\newcommand\mycjkmainfont{\mytestfont}%{Adobe Ming Std}%{花園明朝A}%{TypeLand.com 康熙字典體}%{新細明體}
+\newcommand\mycjksansfont{\mytestfont}%{Adobe Ming Std}%{花園明朝A}%{TypeLand.com 康熙字典體}%{新細明體}
+\newcommand\mycjkmonofont{\mytestfont}%{WenQuanYi Micro Hei Mono}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\cndocFntForTitle{}
+%\cndocFntForMain{}
+
+
+
+
+    % 配置: 使用Adobe作为缺省字体，辅助用新明体补全字形，最后用SourceHanSans扫尾。
+    \renewcommand\mytestfont{\myFntAdobeFangsong}
+    \renewcommand\mycjkfallbackfontA{\mycjkmingext}
+    \renewcommand\mycjkfallbackfontB{\mycjkkhangxi}
+    \renewcommand\mycjkfallbackfontE{\mycjknotol}
+
+    \renewcommand\mycjkboldfont{\myFntAdobeHeiti}
+    \renewcommand\mycjkitalicfont{\myFntAdobeKaiti}
+    \renewcommand\mycjkmainfont{\myFntAdobeFangsong}
+    \renewcommand\mycjksansfont{\myFntAdobeHeiti}
+    \renewcommand\mycjkmonofont{\myFntAdobeFangsong}
+
+
+
+    % 配置: 使用Noto Sans S Chinese作为缺省字体，辅助用康熙字典體补全字形，最后用SourceHanSans扫尾。
+    \renewcommand\mytestfont{\mycjknotol}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    \renewcommand\mycjkfallbackfontA{\mycjkkhangxi}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    \renewcommand\mycjkfallbackfontB{\mycjkmingext}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    \renewcommand\mycjkfallbackfontE{\mycjknotol}%{Noto Sans S Chinese}%{Adobe Heiti Std}
+
+    \renewcommand\mycjkboldfont{\mytestfont}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    \renewcommand\mycjkitalicfont{\mytestfont}%{FZKaiT-Extended}%{全字庫正楷體}
+    \renewcommand\mycjkmainfont{\mytestfont}%{Adobe Ming Std}%{花園明朝A}%{TypeLand.com 康熙字典體}%{新細明體}
+    \renewcommand\mycjksansfont{\mytestfont}%{Adobe Ming Std}%{花園明朝A}%{TypeLand.com 康熙字典體}%{新細明體}
+    \renewcommand\mycjkmonofont{\mytestfont}%{WenQuanYi Micro Hei Mono}
+
+
+
+
+\ifnum\strcmp{\myclinemode}{\detokenize{vertical}}=0
+    % 配置: 使用方正清刻体作为缺省字体，辅助用康熙字典體补全字形，最后用SourceHanSans扫尾。
+    \renewcommand\mytestfont{\mycjkfzqk}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    \renewcommand\mycjkfallbackfontA{\mycjkkhangxi}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    %\renewcommand\mytestfont{\mycjkkhangxi}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    %\renewcommand\mycjkfallbackfontA{\mycjkfzqk}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    \renewcommand\mycjkfallbackfontB{\mycjkmingext}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    \renewcommand\mycjkfallbackfontE{\mycjknotol}%{Noto Sans S Chinese}%{Adobe Heiti Std}
+
+    \renewcommand\mycjkboldfont{\mytestfont}%{TypeLand.com 康熙字典體}%{Adobe Heiti Std}
+    \renewcommand\mycjkitalicfont{\mytestfont}%{FZKaiT-Extended}%{全字庫正楷體}
+    \renewcommand\mycjkmainfont{\mytestfont}%{Adobe Ming Std}%{花園明朝A}%{TypeLand.com 康熙字典體}%{新細明體}
+    \renewcommand\mycjksansfont{\mytestfont}%{Adobe Ming Std}%{花園明朝A}%{TypeLand.com 康熙字典體}%{新細明體}
+    \renewcommand\mycjkmonofont{\mytestfont}%{WenQuanYi Micro Hei Mono}
+
+\fi
+
+
+
+
+
+\newCJKfontfamily{\fntfmyJiaozhu}{Adobe Ming Std}%{{[Path=\myfontdir,]{\mycjkkhangxi}}}  % 校注字体
+
+
+
+\newCJKfontfamily{\fzwkai}   {\FntNameFzbwksgb}  % 方正北魏楷书
+\newCJKfontfamily{\fzzhdxian}{\FntNameFzzdxgb} % 方正中等线
+\newCJKfontfamily{\fzltheib} {\FntNameFzlth}         % 方正兰亭黑扁
+\newCJKfontfamily{\fzydzhhei}{\FntNameFzydh}          % 方正韵动中黑
+\newCJKfontfamily{\fzzhysong}{\FntNameFzys}             % 方正中雅宋
+\newCJKfontfamily{\fzqiti}   {\FntNameFzqt}                  % 方正启体
+\newCJKfontfamily{\fzliukai}[GB18030=\FntNameFzqt]{\FntNameFzsxslk}% 方正苏新诗柳楷简体
+
+
+\setCJKmainfont[Path=\myfontdir,
+    %FallBack=\mycjkfallbackfontE,
+    zhbiaodian={[Path=\myfontdir,]{\mycjkkhangxi}},%mycjkfzqk mycjknoto mycjkkhangxi mycjkming mycjknotol myFntAdobeKaiti myFntAdobeHeiti myFntAdobeFangsong myFntAdobeMing myFntAdobeSong
+    BoldFont=\mycjkboldfont,
+    ItalicFont=\mycjkitalicfont,
+    ItalicFeatures={RawFeature={slant=0.17}}, % 定义 \itshape 为斜体
+    BoldItalicFeatures={RawFeature={slant=0.17}}, % 定义 \bfseries\itshape 为斜体
+    AutoFakeBold,AutoFakeSlant]{\mycjkmainfont}
+
+% FallBack 的值为空,将设置 备用字体
+\setCJKmainfont[FallBack,Path=\myfontdir,]{\mycjkfallbackfontE}
+\addCJKfontfeatures{Scale=1.5}
+
+\setCJKsansfont[Path=\myfontdir,
+    FallBack=\mycjkfallbackfontE,
+    BoldFont=\mycjkboldfont,
+    ItalicFont=\mycjkitalicfont,
+    ItalicFeatures={RawFeature={slant=0.17}}, % 定义 \itshape 为斜体
+    BoldItalicFeatures={RawFeature={slant=0.17}}, % 定义 \bfseries\itshape 为斜体
+    AutoFakeBold,AutoFakeSlant]{\mycjksansfont}
+
+%\setCJKfallbackfamilyfont{\CJKrmdefault}
+%  [BoldFont={FZHei-B01_GB18030},ItalicFont={FZKai-Z03_GB18030}]{FZShuSong-Z01_GB18030}
+%\setCJKfallbackfamilyfont{\CJKsfdefault}
+%  [BoldFont={FZHei-B01_GB18030},ItalicFont={FZKai-Z03_GB18030}]{FZLanTingHei-R_GB18030_YS}
+%\setCJKfallbackfamilyfont{\CJKttdefault}
+%  [BoldFont={FZHei-B01_GB18030},ItalicFont={FZKai-Z03_GB18030}]{FZFangSong-Z02_GB18030}
+
+\setCJKfallbackfamilyfont{\CJKrmdefault}[AutoFakeSlant]{
+%\setCJKfallbackfamilyfont{rm}[AutoFakeSlant]{
+    [Path=\myfontdir]{\mycjkfallbackfontA},
+    [Path=\myfontdir]{\mycjkfallbackfontB},
+    [Path=\myfontdir]{\mycjkfallbackfontE}
+}
+\setCJKfallbackfamilyfont{\CJKsfdefault}[AutoFakeSlant]{
+    [Path=\myfontdir]{\mycjkfallbackfontA},
+    [Path=\myfontdir]{\mycjkfallbackfontB},
+    [Path=\myfontdir]{\mycjkfallbackfontE}
+}
+\setCJKfallbackfamilyfont{\CJKttdefault}[AutoFakeSlant]{
+    [Path=\myfontdir]{\mycjkfallbackfontA},
+    [Path=\myfontdir]{\mycjkfallbackfontB},
+    [Path=\myfontdir]{\mycjkfallbackfontE}
+}

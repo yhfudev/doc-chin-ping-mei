@@ -1,0 +1,282 @@
+%# -*- coding: utf-8 -*-
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+% vim:ts=4:sw=4
+%
+% 以上设定默认使用 XeLaTex 编译，并指定 Unicode 编码，供 TeXShop 自动识别
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\catcode`@=11
+\ifx\cndocRevision\@undefined
+\ifx\eTeXrevision\@undefined
+  \errmessage{eTeX required to use this package}
+\fi
+\def\cndocRevision{2014.08.30.}
+
+\newcommand\mypdfcreator{}
+\newcommand\mypdfproducer{cndocbase-\cndocRevision}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\commentsr[1]{#1}
+\newcommand\comments[1]{#1}
+\renewcommand\comments[1]{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parameters from command line
+
+% run
+% xelatex "\def\fnotemode{modern} \input{test-arg.tex}"
+% to see the results
+
+% footnote mode: gezhu, modern
+\newcommand\myfnotemode{modern}
+\newcommand{\cndocFnoteMode}[1]{%
+    \renewcommand{\myfnotemode}{#1}%
+}
+\ifdefined\fnotemode
+  \ifnum\strcmp{\fnotemode}{\detokenize{modern}}=0
+    \cndocFnoteMode{modern}
+  \else\ifnum\strcmp{\fnotemode}{\detokenize{gezhu}}=0
+    \cndocFnoteMode{gezhu}
+  \fi
+  \fi
+\fi
+
+% char line mode: horizontal, vertical
+\newcommand\myclinemode{horizontal}
+\newcommand{\cndocClineMode}[1]{%
+    \renewcommand{\myclinemode}{#1}%
+}
+\ifdefined\clinemode
+  \ifnum\strcmp{\clinemode}{\detokenize{horizontal}}=0
+    \cndocClineMode{horizontal}
+  \else\ifnum\strcmp{\clinemode}{\detokenize{vertical}}=0
+    \cndocClineMode{vertical}
+  \fi
+  \fi
+\fi
+
+% page orientation: portrait, landscape
+\newcommand\mypageorien{portrait}
+\newcommand{\cndocPageOrien}[1]{%
+    \renewcommand{\mypageorien}{#1}%
+}
+\ifdefined\pageorien
+  \ifnum\strcmp{\pageorien}{\detokenize{portrait}}=0
+    \cndocPageOrien{portrait}
+  \else\ifnum\strcmp{\pageorien}{\detokenize{landscape}}=0
+    \cndocPageOrien{landscape}
+  \fi
+  \fi
+\fi
+
+% scale of the char
+\newcommand\mycharscale{1}
+\newcommand{\cndocCharScale}[1]{%
+    \renewcommand{\mycharscale}{#1}%
+}
+\ifdefined\charscale
+  \cndocCharScale{\charscale}
+\fi
+
+% letter: 215.90x279.40mm, 8x11 in, 2550x3300p(300ppi)
+% A3: 297.01x419.95mm
+% A4: 209.97x297.01mm, 2480x3508(300ppi)
+% A5: 148.51x209.97mm (６‘电子屏？145x210mm)
+% A6: 104.99x148.51mm
+% B4: 250.02x352.98mm
+% B5: 176.02x250.02mm
+
+% page height
+\newcommand\mypageheight{11in}%{210mm}
+\newcommand{\cndocPageHeight}[1]{%
+    \renewcommand{\mypageheight}{#1}%
+}
+\ifdefined\pageheight
+  \cndocPageHeight{\pageheight}
+\fi
+
+% page width
+\newcommand\mypagewidth{8in}%{145mm}
+\newcommand{\cndocPageWidth}[1]{%
+    \renewcommand{\mypagewidth}{#1}%
+}
+\ifdefined\pagewidth
+  \cndocPageWidth{\pagewidth}
+\fi
+
+\newcommand\mymargin{none}
+\newcommand{\cndocMargin}[1]{%
+    \renewcommand{\mymargin}{#1}%
+}
+\ifdefined\margin
+  \cndocMargin{\margin}
+\fi
+
+\newcommand\mybackground{none}
+\newcommand{\cndocBackground}[1]{%
+    \renewcommand{\mybackground}{#1}%
+}
+\ifdefined\background
+  \cndocBackground{\background}
+\fi
+
+% use ctex?
+\newcommand\myusecjk{0}
+\newcommand{\cndocUseCjk}{%
+    \renewcommand{\myusecjk}{1}%
+}
+\ifdefined\usecjk
+  \cndocUseCjk
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareRobustCommand*\KG{\kern\ccwd}%{ }%{\quad}%
+\DeclareRobustCommand*\@cdot{\textcentereddot}
+
+%\titlelabel{\S\thetitle\quad}
+%\titlelabel{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% require for function declair
+\RequirePackage{expl3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% setup the documents title etc.
+\newcommand{\mydoctitle}{FIXME: book title (use cndocTitle)}
+\newcommand{\cndocTitle}[1]{%
+    \renewcommand{\mydoctitle}{#1}%
+}
+\newcommand{\mydocauthor}{FIXME: book author (use cndocAuthor)}
+\newcommand{\cndocAuthor}[1]{%
+    \renewcommand{\mydocauthor}{#1}%
+}
+\newcommand{\mydockeywords}{}
+\newcommand{\cndocKeywords}[1]{%
+    \renewcommand{\mydockeywords}{#1}%
+}
+\newcommand{\mydocsubject}{}
+\newcommand{\cndocSubject}[1]{%
+    \renewcommand{\mydocsubject}{#1}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\gezhuEnablePi % 批評
+%\gezhuEnableZhu % 注疏
+%\gezhuEnableJiao % 校記
+
+\newcommand\myEnableJiao{0}
+\newcommand{\gezhuEnableJiao}{%
+    \renewcommand\myEnableJiao{1}%
+}
+\newcommand{\gezhuDisableJiao}{%
+    \renewcommand\myEnableJiao{0}%
+}
+
+\newcommand\myEnablePi{0}
+\newcommand{\gezhuEnablePi}{%
+    \renewcommand\myEnablePi{1}%
+}
+\newcommand{\gezhuDisablePi}{%
+    \renewcommand\myEnablePi{0}%
+}
+
+\newcommand\myEnableZhu{0}
+\newcommand{\gezhuEnableZhu}{%
+    \renewcommand\myEnableZhu{1}%
+}
+\newcommand{\gezhuDisableZhu}{%
+    \renewcommand\myEnableZhu{0}%
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% function for including chapters
+\ExplSyntaxOn
+\cs_new:Nn \JPM_includechapters:n
+  { \prg_replicate:nn {#1} \JPM_includechapters: }
+\int_new:N \g_JPM_chapter_int
+\cs_new:Nn \JPM_includechapters:
+  {
+    \int_gincr:N \g_JPM_chapter_int
+    \int_compare:nTF { \g_JPM_chapter_int < \c_ten }
+      {
+        \tl_set:Nx \l_JPM_chapter_tl { 0 0 }
+      }
+      {
+        \int_compare:nTF { \g_JPM_chapter_int < \c_one_hundred }
+          { \tl_set:Nx \l_JPM_chapter_tl { 0 } }
+          { \tl_set:Nx \l_JPM_chapter_tl { \c_empty_tl } }
+      }
+    %\cleardoublepage
+    \include{chap-cihua/jpm.\l_JPM_chapter_tl\int_use:N\g_JPM_chapter_int}
+  }
+\cs_new_eq:NN \includechapters \JPM_includechapters:n
+\ExplSyntaxOff
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% extract files from pdf file
+% pdfimage -j 金瓶梅词话_6寸_插图版.pdf cz-
+% rename the figure files:
+% ls | while read f ; do l=$(echo $f | awk -F. '{print $2}'); t=$(echo $f | awk -F. '{print $1}' | awk -F- '{i=0; i += $2 ; a=i/2+1; b=(i)%2+1; printf("cz.%03d.%d\n", int(a), b); }'); mv $f "$t.$l"; done
+
+% rename jpmXX.tex to jpmXXX.tex
+% ls *.tex | while read f ; do T=$(echo $f | awk -F. '{print $1}' | awk -Fm '{i=0; i += $2 ; printf("jpm.%03d.tex\n", i); }'); mv $f $T; done
+
+\newcommand{\myincchapge}[2]{\pagestyle{main}\input{chap-cihua/jpm.#1#2.tex}}
+
+\newcommand{\myincchapshi}[2]{
+\myincchapge{#1#2}{0}
+\myincchapge{#1#2}{1}
+\myincchapge{#1#2}{2}
+\myincchapge{#1#2}{3}
+\myincchapge{#1#2}{4}
+\myincchapge{#1#2}{5}
+\myincchapge{#1#2}{6}
+\myincchapge{#1#2}{7}
+\myincchapge{#1#2}{8}
+\myincchapge{#1#2}{9}
+}
+
+\newcommand{\myincchapbai}[2]{
+\myincchapshi{#1#2}{0}
+\myincchapshi{#1#2}{1}
+\myincchapshi{#1#2}{2}
+\myincchapshi{#1#2}{3}
+\myincchapshi{#1#2}{4}
+\myincchapshi{#1#2}{5}
+\myincchapshi{#1#2}{6}
+\myincchapshi{#1#2}{7}
+\myincchapshi{#1#2}{8}
+\myincchapshi{#1#2}{9}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{marginnote}
+%\usepackage{geometry}
+\RequirePackage[xetex]{geometry}
+%\reversemarginpar
+
+\geometry{margin = 0.8in}
+%\PassOptionsToPackage{margin=0.8in,nohead}{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage[pagestyles,clearempty]{titlesec}
+\RequirePackage[titles]{tocloft}
+
+\RequirePackage{calc}
+
+
+% color
+\RequirePackage{color}
+\RequirePackage[rgb,x11names]{xcolor} %must before tikz, x11names defines RoyalBlue3

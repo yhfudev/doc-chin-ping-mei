@@ -1,0 +1,228 @@
+%# -*- coding: utf-8 -*-
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+% vim:ts=4:sw=4
+%
+% 以上设定默认使用 XeLaTex 编译，并指定 Unicode 编码，供 TeXShop 自动识别
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\myUseOneside{0}
+
+% 這裏使用比較“髒”的方法，以確保同時可設置單頁並滿足Latex的documentclass必須第一個出現的要求
+% 消除圖片佈置頁碼混亂導致的翻倒問題
+% 只要是豎排，不區分單偶頁：
+\ifdefined\clinemode
+  \ifnum\strcmp{\clinemode}{\detokenize{vertical}}=0
+    \renewcommand\myUseOneside{1}
+  \fi
+\fi
+\ifnum\strcmp{\jobname}{\detokenize{type-zhmdv}}=0
+    \renewcommand\myUseOneside{1}
+\fi
+\ifnum\strcmp{\jobname}{\detokenize{type-zhgzv}}=0
+    \renewcommand\myUseOneside{1}
+\fi
+
+\ifnum\myUseOneside > 0
+    \documentclass[letter,11pt,onecolumn,oneside]{book}
+\else
+    \documentclass[letter,11pt,onecolumn]{book}
+\fi
+%\documentclass[a4paper,11pt,twocolumn]{article}
+%\documentclass[letter,11pt,onecolumn,adobefonts,cm-default]{ctexbook}
+%\documentclass[letter,11pt,onecolumn,
+    %oneside % remove blank page between chapters
+    %]{book}
+% or remove blank pages: \let\cleardoublepage\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{cndocbase}
+
+\cndocTitle{金瓶梅詞話}
+\cndocAuthor{（明）蘭陵笑笑生}
+\cndocKeywords{{金瓶梅}{蘭陵笑笑生}{The Plum in the Golden Vase}{Chin P'ing Mei}}
+\cndocSubject{金瓶梅詞話, （明）蘭陵笑笑生著；梅節校訂、陳詔、黃霖注釋}
+
+\gezhuEnablePi % 批評
+\gezhuEnableZhu % 注疏
+\gezhuEnableJiao % 校記
+
+% test:
+%\cndocFnoteMode{modern}
+%\cndocClineMode{vertical}
+%\cndocPageOrien{portrait}
+%\cndocCharScale{1.2}
+%\cndocPageWidth{145mm}
+%\cndocPageHeight{210mm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\ifnum\strcmp{\jobname}{\detokenize{type-zhmd}}=0
+    % 中文现代横排（注释在底部）
+    \cndocUseCjk
+    \cndocFnoteMode{modern}%{modern}%{gezhu}
+    \cndocClineMode{horizontal}%{horizontal}%{vertical}
+    \cndocPageOrien{portrait}%{portrait}%{landscape}
+    %\cndocCharScale{1.2}
+    %\cndocPageWidth{145mm}
+    %\cndocPageHeight{210mm}
+
+\else\ifnum\strcmp{\jobname}{\detokenize{type-zhgzv}}=0
+    % 中文割注竖排
+    \cndocUseCjk
+    \cndocFnoteMode{gezhu}%{modern}%{gezhu}
+    \cndocClineMode{vertical}%{horizontal}%{vertical}
+    %\cndocPageOrien{landscape}%{portrait}%{landscape}
+
+\else\ifnum\strcmp{\jobname}{\detokenize{type-zhgz}}=0
+    % 中文割注横排
+    \cndocUseCjk
+    \cndocFnoteMode{gezhu}%{modern}%{gezhu}
+    \cndocClineMode{horizontal}%{horizontal}%{vertical}
+    \cndocPageOrien{portrait}%{portrait}%{landscape}
+
+\else\ifnum\strcmp{\jobname}{\detokenize{type-zhmdv}}=0
+    % 中文现代竖排（注释在旁边）
+    \cndocUseCjk
+    \cndocFnoteMode{gezhu}%{modern}%{gezhu}
+    \cndocClineMode{vertical}%{horizontal}%{vertical}
+    \cndocPageOrien{landscape}%{portrait}%{landscape}
+
+\else%\ifnum\strcmp{\jobname}{\detokenize{type-en}}=0
+    % default: English text with chinese chars support
+    %\usepackage[fallback]{xeCJK}
+    %\newfontlanguage{mylanguage}{ENG}
+\fi
+\fi
+\fi
+\fi
+\makeatother
+
+
+\include{setupbase}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\jpmPrefixFigures{figures-jpmxxjpg/jpmcz}
+%\newcommand\jpmPrefixFigures{figures-cz/cz}
+\newcommand\jpmSuffixFigures{jpg}
+%\newcommand\jpmPrefixFigures{figures-czeps/jpmcz}
+%\newcommand\jpmSuffixFigures{eps}
+
+\newcommand\jpmPrefixChapter{chap-cihua/jpm}
+
+\input{setupjpm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%opening
+\title{\mydoctitle}
+\author{\mydocauthor}
+\date{}
+
+
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\include{chap-made/jpm.madeintro}
+\include{chap-cihua/jpm.000}
+
+%\cleardoublepage
+\tableofcontents
+
+\mainmatter
+
+%\pagestyle{main}
+%\include{chap-made/jpm.test}
+
+
+%\includechapters{4}
+\myincchapge{00}{1}
+\myincchapge{00}{2}
+\myincchapge{00}{3}
+\myincchapge{00}{4}
+\myincchapge{00}{5}
+\myincchapge{00}{6}
+\myincchapge{00}{7}
+\myincchapge{00}{8}
+\myincchapge{00}{9}
+\myincchapshi{0}{1}
+\myincchapshi{0}{2}
+\myincchapshi{0}{3}
+\myincchapshi{0}{4}
+\myincchapshi{0}{5}
+\myincchapshi{0}{6}
+\myincchapshi{0}{7}
+\myincchapshi{0}{8}
+\myincchapshi{0}{9}
+\myincchapge{10}{0}
+
+%\myincfig{jpmcz-004-b.jpg}{捉奸情鄆哥定記}
+%\myincfig{jpmcz-013-a.jpg}{李瓶姐牆頭密約}
+%\myincfig{jpmcz-026-a.jpg}{西門慶暗算來旺兒}
+%\myincfig{jpmcz-037-b.jpg}{西門慶包占王六兒}
+%\myincfig{jpmcz-038-b.jpg}{潘金蓮雪夜弄琵琶}
+%\myincfig{jpmcz-042-a.jpg}{逞豪華門前放煙火}
+%\myincfig{jpmcz-055-a.jpg}{西門慶兩番慶壽旦}
+%\myincfig{jpmcz-059-b.jpg}{李瓶兒睹物哭官哥}
+%\myincfig{jpmcz-089-a.jpg}{清明節寡婦上新墳}
+%\myincfig{jpmcz-096-a.jpg}{春梅姐遊舊家池館}
+
+
+\pagestyle{special}
+\appendix
+
+
+\include{chap-made/jpm.prod}
+
+
+
+\chapter*{介绍}
+\addcontentsline{toc}{chapter}{介绍}
+
+《金瓶梅词话》是我国第一部以家庭日常生活为素材的长篇小说。它的开头据《水浒传》中西门庆与潘金莲的故事改编，写潘金莲未被武松杀死，嫁给西门庆为妾，由此转入小说的主体部分，描写西门庆家庭内发生的一系列事件，以及西门庆与社会中各色人物的交往，直到他纵欲身亡，其家庭破败，众妾风云流散。书名由小说中三个主要女性（潘金莲、李瓶儿、春梅）的名字合成。在万历年间，已有《金瓶梅》抄本流传。据袁中郎于万历二十四年（1596）写给董其昌的信，他曾从董处抄得此书的一部分；又据《万历野获编》，沈德符在万历三十七年（1609）从袁中道处抄得全本，携至吴中，此后大约过了好几年，才有刻本流传。现在所能看到的最早刻本，是卷首有万历四十五年丁巳（1617）东吴弄珠客序及欣欣子序的《金瓶梅词话》，共一百回，有的研究者认为这可能就是初刻本。其后有崇祯年间刊行的《新刻绣像批评金瓶梅》，一般认为是前者的评改本。它对原本的改动主要是更改回目、变更某些情节、修饰文字，并削减了原本中词话的痕迹。清康熙年间，张竹坡评点的《金瓶梅》刊行（此书扉页刻有“第一奇书”四字，因此也称作《第一奇书》）。它是以崇祯本为底本，文字上略有修改，加上张氏的回评、夹批，并在卷首附有《竹坡闲话》、《金瓶梅读法》、《金瓶梅寓意说》等专论。这个本子在清代流传最广。
+
+《金瓶梅词话》的作者，据卷首“欣欣子”序说，是“兰陵笑笑生”。用古名称为“兰陵”之地有二，一在今山东峄县，一在今江苏武进县，以何者为是，尚无定论。这位“笑笑生”究为何人，也至今无法确认。沈德符在《万历野获编》中说作者是“嘉靖间大名士”，袁中道在《游居柿录》中说作者是“绍兴老儒”，谢肇淛《金瓶梅跋》说作者是“金吾戚里”的门客，皆语焉不详。后世人们对此提出种种猜测和推考，先后有王世贞、李开先、屠隆、徐渭、汤显祖、李渔等十几种不同的意见，但尚没有一种意见能成定论。关于小说的创作年代，也有嘉靖与万历两说，研究者一般认为后者为是。如小说中引用的《祭头巾文》，系万历间著名文人屠隆之作；写西门庆家宴分别用“苏州戏子”、“海盐子弟”演戏，为万历以后才有的风气，都可以作为证据。
+
+虽然《金瓶梅词话》作者的情况不详，但仍可以推断为我国第一部由文人独立创作的长篇小说。有人认为，根据《金瓶梅词话》较多保留了说唱艺术的痕迹、书中情节与文字前后颇有抵牾、较多引录前人作品等情况，这部小说当是和《三国演义》、《水浒传》等一样，是由某个文人在民间创作的基础上改写而成，但这一说法难以成立。和《三国演义》等不同，在《金瓶梅词话》问世之前，根本没有内容相似的雏形作品流传，而且据《万历野获编》的记载来看，广闻博识的沈德符在未读这部小说之前，也不知道这是一部什么样的书，此其一；《金瓶梅词话》是一部大量描绘日常生活琐事的小说，没有传奇色彩，故事性也不强，不易分割成相对独立的单元，尽管在这部小说流行渐广以后，也有取其片断为说唱材料的情况，但从全书来说，它不适宜作为民间说唱的底本，此其二。至于保留了说唱艺术的痕迹，只能说是作者有意模拟及个人爱好的表现。
+
+
+\section*{版本历史}
+
+
+万历本《金瓶梅词话》在国内多年无闻，至1932年方在山西介休发现一部，收购者“文友堂”书铺奇货可居，几流入日本，终在社会舆论干预下由北京图书馆购藏。当时为偿购书款，以“古佚小说刊行会”名义单色缩小影印120部。此本全书几近完整，仅第52回缺失两叶，影印时以崇祯本钞补，同时加入崇祯本的100幅插图一并付印。此后。1955年北京以“文学古籍刊行社”名义，用32年影印本（原本在抗战时寄存美国国会图书馆，当时尚未归还），翻印一次，内部发行，制作时，对底本略有挖改。1963年，日本清查全国所存《金瓶梅词话》，得残本3种，以其中保存较多的日光轮王寺慈眼堂藏本和德山毛利家栖息堂藏本配合影印，由大安株式会社（大安公司）出版，大安本号称完整无缺（见[日]长泽规矩也《序》），经梅节等学者研究，慈眼堂藏本与栖息堂藏本相配尚有残缺，大安株式会社影印时“盗用”32年本第94回两个单面页补充完整。此大安本在台湾又有翻印。1978年台湾联经出版事业公司以朱墨二色套印成历丁巳本《金瓶梅词话》，还原原尺寸大小，所缺第52回两叶用日本大安本配补。但联经并非直接据当时已归还并藏于台北故宫博物院的“古佚小说刊行会”本的底本照像分色制版，而是用傅斯年藏“古佚小说刊行会”本放大成原本尺寸复印两份，一作原文，一据故宫藏原本描抄朱墨评改，“整理后影印”。所以出现正文虚浮湮漶，朱文移位、变形、错写的现象，实为美中不足。1980年大陆重印55年本，，续有“加工”，去真愈远。1982年香港中华书局以“太平书局”名义据55年印本印行，此“太平本”营销海内外并被大量盗印。1991年，人民文学出版社重印32年本，并据大安本补足底本所缺第52回的两叶。
+
+另外，台湾增你智出版社等有排印全本，香港学者梅节穷多年之力，校理成定本在香港、台湾以《梦梅馆校本金瓶梅》。大陆则有齐鲁书社特批印制内部发行一批排印全本。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Document body: Back matter (mandatory)
+\backmatter
+
+% Back matter: Bibliography chapter (mandatory)
+%\bibliography{database}
+
+% Back matter: Index chapter (mandatory)
+%\printindex
+
+\end{document}

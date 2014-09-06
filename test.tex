@@ -1,0 +1,199 @@
+%# -*- coding: utf-8 -*-
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+% vim:ts=4:sw=4
+%
+% 以上设定默认使用 XeLaTex 编译，并指定 Unicode 编码，供 TeXShop 自动识别
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\myUseOneside{0}
+
+% 這裏使用比較“髒”的方法，以確保同時可設置單頁並滿足Latex的documentclass必須第一個出現的要求
+% 消除圖片佈置頁碼混亂導致的翻倒問題
+% 只要是豎排，不區分單偶頁：
+\ifdefined\clinemode
+  \ifnum\strcmp{\clinemode}{\detokenize{vertical}}=0
+    \renewcommand\myUseOneside{1}
+  \fi
+\fi
+\ifnum\strcmp{\jobname}{\detokenize{type-zhmdv}}=0
+    \renewcommand\myUseOneside{1}
+\fi
+\ifnum\strcmp{\jobname}{\detokenize{type-zhgzv}}=0
+    \renewcommand\myUseOneside{1}
+\fi
+
+\ifnum\myUseOneside > 0
+    \documentclass[letter,11pt,onecolumn,oneside]{book}
+\else
+    \documentclass[letter,11pt,onecolumn]{book}
+\fi
+%\documentclass[a4paper,11pt,twocolumn]{article}
+%\documentclass[letter,11pt,onecolumn,adobefonts,cm-default]{ctexbook}
+%\documentclass[letter,11pt,onecolumn,
+    %oneside % remove blank page between chapters
+    %]{book}
+% or remove blank pages: \let\cleardoublepage\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{cndocbase}
+
+\cndocTitle{會評會校新刻繡像批評金瓶梅}
+\cndocAuthor{（明）蘭陵笑笑生}
+\cndocKeywords{{金瓶梅}{蘭陵笑笑生}{The Plum in the Golden Vase}{Chin P'ing Mei}}
+\cndocSubject{}
+
+\gezhuEnablePi % 批評
+\gezhuEnableZhu % 注疏
+\gezhuEnableJiao % 校記
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\ifnum\strcmp{\jobname}{\detokenize{type-zhmd}}=0
+    % 中文现代横排（注释在底部）
+    \cndocUseCjk
+    \cndocFnoteMode{modern}%{modern}%{gezhu}
+    \cndocClineMode{horizontal}%{horizontal}%{vertical}
+    \cndocPageOrien{portrait}%{portrait}%{landscape}
+    %\cndocCharScale{1.2}
+    %\cndocPageWidth{145mm}
+    %\cndocPageHeight{210mm}
+
+\else\ifnum\strcmp{\jobname}{\detokenize{type-zhgzv}}=0
+    % 中文割注竖排
+    \cndocUseCjk
+    \cndocFnoteMode{gezhu}%{modern}%{gezhu}
+    \cndocClineMode{vertical}%{horizontal}%{vertical}
+    %\cndocPageOrien{landscape}%{portrait}%{landscape}
+
+\else\ifnum\strcmp{\jobname}{\detokenize{type-zhgz}}=0
+    % 中文割注横排
+    \cndocUseCjk
+    \cndocFnoteMode{gezhu}%{modern}%{gezhu}
+    \cndocClineMode{horizontal}%{horizontal}%{vertical}
+    \cndocPageOrien{portrait}%{portrait}%{landscape}
+
+\else\ifnum\strcmp{\jobname}{\detokenize{type-zhmdv}}=0
+    % 中文现代竖排（注释在旁边）
+    \cndocUseCjk
+    \cndocFnoteMode{gezhu}%{modern}%{gezhu}
+    \cndocClineMode{vertical}%{horizontal}%{vertical}
+    \cndocPageOrien{landscape}%{portrait}%{landscape}
+
+\else%\ifnum\strcmp{\jobname}{\detokenize{type-en}}=0
+    % default: English text with chinese chars support
+    %\usepackage[fallback]{xeCJK}
+    %\newfontlanguage{mylanguage}{ENG}
+\fi
+\fi
+\fi
+\fi
+\makeatother
+
+\include{setupbase}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\jpmPrefixFigures{figures-jpmxxjpg/jpmcz}
+%\newcommand\jpmPrefixFigures{figures-cz/cz}
+\newcommand\jpmSuffixFigures{jpg}
+%\newcommand\jpmPrefixFigures{figures-czeps/jpmcz}
+%\newcommand\jpmSuffixFigures{eps}
+
+\newcommand\jpmPrefixChapter{chap-xiuxiang/jpm}
+% #1: the prefix of the chapter files
+%\newcommand\jpmSetupChapter[1]{
+    %\renewcommand\jpmPrefixChapter{#1}
+%}
+%\jpmSetupChapter{chap-xiuxiang/jpm}
+
+
+\input{setupjpm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%opening
+\title{\mydoctitle}
+\author{\mydocauthor}
+\date{}
+
+
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\include{chap-made/jpm.madeintro}
+\include{chap-xiuxiang/jpm.000}
+
+%\endmyonkyoh
+
+%\cleardoublepage
+\tableofcontents
+
+\mainmatter
+
+%\pagestyle{main}
+
+\input{chap-made/jpm.test}
+
+%\includechapters{4}
+\myincchapge{00}{1}
+\myincchapge{00}{2}
+%\myincchapge{00}{3}
+%\myincchapge{00}{4}
+%\myincchapge{00}{5}
+%\myincchapge{00}{6}
+%\myincchapge{00}{7}
+%\myincchapge{00}{8}
+%\myincchapge{00}{9}
+%\myincchapshi{0}{1}
+%\myincchapshi{0}{2}
+%\myincchapshi{0}{3}
+%\myincchapshi{0}{4}
+%\myincchapshi{0}{5}
+%\myincchapshi{0}{6}
+%\myincchapshi{0}{7}
+%\myincchapshi{0}{8}
+%\myincchapshi{0}{9}
+%\myincchapge{10}{0}
+
+
+%\endmyonkyoh
+
+
+
+\pagestyle{special}
+\appendix
+
+\input{chap-made/jpm.prod}
+
+\input{chap-made/chap-cz-deleted.tex}
+
+%\chapter*{介绍}
+%\addcontentsline{toc}{chapter}{介绍}
+
+%《金瓶梅词话》是我国第一部以家庭日常生活为素材的长篇小说。
+
+
+
+
+%\endmyonkyoh
+
+% Document body: Back matter (mandatory)
+\backmatter
+
+% Back matter: Bibliography chapter (mandatory)
+%\bibliography{database}
+
+% Back matter: Index chapter (mandatory)
+%\printindex
+
+\end{document}
