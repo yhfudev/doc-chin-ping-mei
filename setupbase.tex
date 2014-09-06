@@ -338,6 +338,27 @@
 \fi
 
 
+
+
+\newcommand{\myfootnote}[1]{
+    \footnote{#1}
+}
 \ifnum\strcmp{\myfnotemode}{\detokenize{gezhu}}=0
     \input{gezhubase.tex}
+
+    \renewcommand{\myfootnote}[1]{
+        \gezhu{#1}
+    }
+
+    \newenvironment{showcontents}[1]{%
+        \begin{withgezhu} \Huge
+    }{%
+        \end{withgezhu}
+    }
+
+\else
+    \newenvironment{showcontents}[1]{%
+    }{%
+    }
+
 \fi

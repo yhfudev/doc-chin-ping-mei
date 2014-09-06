@@ -43,22 +43,28 @@
 \newcommand\tiJPM[1]{{\bigskip\mbox{}\fzqiti\large\hfill #1 \quad}}
 
 
-\newcommand{\mnote}[1]{\marginpar{\raggedright
-\textsf{\footnotesize{%
-\begin{spacing}{1.025}%
-#1%
-\end{spacing}%
-}}}}
+%\newcommand{\mnote}[1]{\marginpar{\raggedright
+%\textsf{\footnotesize{%
+%\begin{spacing}{1.025}%
+%#1%
+%\end{spacing}%
+%}}}}
 
-\newcommand{\mnoteb}[1]{{\marginpar{\raggedright\sffamily\footnotesize
-\setstretch{1.025}%
-#1}}}
+%\newcommand{\mnoteb}[1]{{\marginpar{\raggedright\sffamily\footnotesize
+%\setstretch{1.025}%
+%#1}}}
+
+
+
+\newcommand\myscriptsize{\tiny}
+
+
 
 
 \newcommand\jiaoZhanginfo{張竹坡皋鶴堂批評第一奇書批評本。齐鲁书社　1987　年版《张竹坡批评第一奇书金瓶梅》} \newcommand\zhuZhanginfo{\jiaoZhanginfo} \newcommand\piZhanginfo{\jiaoZhanginfo}
 \newcommand\piZhangF[1]{ \ifnum\myEnablePi > 0  {\fntfmyJiaozhu \color{darkred} #1 （張竹坡皋鶴堂批評第一奇書批評本）} \fi} % 批評 (整段，張竹坡皋鶴堂批評第一奇書批評本批語)
-\newcommand\piZhang[1]{ \ifnum\myEnablePi > 0  \footnote{{\fntfmyJiaozhu\scriptsize\linespread{0.9} \color{darkred} 張批: #1}} \fi } % 批評 (張竹坡皋鶴堂批評第一奇書批評本批語)
-%\newcommand\piZhang[1]{ \ifnum\myEnablePi > 0  \footnote{張批: #1} \fi } % 批評 (張竹坡皋鶴堂批評第一奇書批評本批語)
+\newcommand\piZhang[1]{ \ifnum\myEnablePi > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkred} 張批: #1}} \fi } % 批評 (張竹坡皋鶴堂批評第一奇書批評本批語)
+%\newcommand\piZhang[1]{ \ifnum\myEnablePi > 0  \myfootnote{張批: #1} \fi } % 批評 (張竹坡皋鶴堂批評第一奇書批評本批語)
 
 %\renewcommand\piZhang[1]{\gezhu{#1}}
 
@@ -66,36 +72,36 @@
 
 \newcommand\jiaoLiyuinfo{李漁新刻繡像批評本} \newcommand\zhuLiyuinfo{\jiaoLiyuinfo} \newcommand\piLiyuinfo{\jiaoLiyuinfo}
 \newcommand\piLiyuF[1]{ \ifnum\myEnablePi > 0 {\fntfmyJiaozhu \color{darkblue} #1 （李漁新刻繡像批評本）} \fi} % 批評 (李漁新刻繡像批評本批語)
-\newcommand\piLiyu[1]{ \ifnum\myEnablePi > 0  \footnote{{\fntfmyJiaozhu\scriptsize\linespread{0.9} \color{darkblue} 繡像批: #1}} \fi } % 批評 (李漁新刻繡像批評本批語)
-%\newcommand\piLiyu[1]{ \ifnum\myEnablePi > 0  \footnote{繡像批: #1} \fi } % 批評 (李漁新刻繡像批評本批語)
+\newcommand\piLiyu[1]{ \ifnum\myEnablePi > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkblue} 繡像批: #1}} \fi } % 批評 (李漁新刻繡像批評本批語)
+%\newcommand\piLiyu[1]{ \ifnum\myEnablePi > 0  \myfootnote{繡像批: #1} \fi } % 批評 (李漁新刻繡像批評本批語)
 
 
 % 文龍（字禹門）光緒年間墨批六萬餘字。這是繼張竹坡之後，對《金瓶梅》一書的重要評論，具有珍貴的文獻價值。文龍批語分回末評、眉批、夾批等部分。
 \newcommand\jiaoWenglonginfo{文龍在茲堂本手書批評本} \newcommand\zhuWenglonginfo{\jiaoWenglonginfo} \newcommand\piWenglonginfo{\jiaoWenglonginfo}
 \newcommand\piWenglongF[1]{ \ifnum\myEnablePi > 0  {\fntfmyJiaozhu \color{darkpurple} #1 （文龍在茲堂本手書批評本）} \fi} % 批評 (文龍在茲堂本手書批評本批語)
-\newcommand\piWenglong[1]{ \ifnum\myEnablePi > 0  \footnote{{\fntfmyJiaozhu\scriptsize\linespread{0.9} \color{darkpurple} 文龍批: #1}} \fi } % 批評 (文龍在茲堂本手書批評本批語)
-%\newcommand\piWenglong[1]{ \ifnum\myEnablePi > 0  \footnote{文龍批: #1} \fi } % 批評 (文龍在茲堂本手書批評本批語)
+\newcommand\piWenglong[1]{ \ifnum\myEnablePi > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkpurple} 文龍批: #1}} \fi } % 批評 (文龍在茲堂本手書批評本批語)
+%\newcommand\piWenglong[1]{ \ifnum\myEnablePi > 0  \myfootnote{文龍批: #1} \fi } % 批評 (文龍在茲堂本手書批評本批語)
 
 
 \newcommand\jiaoYLinfo{金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社} \newcommand\zhuYLinfo{\jiaoYLinfo} \newcommand\piYLinfo{\jiaoYLinfo}
-\newcommand\jiaoYL[1]{ \ifnum\myEnableJiao > 0  \footnote{{\fntfmyJiaozhu\scriptsize\linespread{0.9} \color{darkpurple} 麓校: #1}} \fi } % 校記 (金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社)
-%\newcommand\jiaoYL[1]{ \ifnum\myEnableJiao > 0  \footnote{麓校: #1} \fi } % 校記 (金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社)
-\newcommand\zhuYL[1]{ \ifnum\myEnableZhu > 0  \footnote{{\fntfmyJiaozhu\scriptsize\linespread{0.9} \color{darkpurple} 麓注: #1}} \fi } % 注疏 (金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社)
-%\newcommand\zhuMINE[1]{ \ifnum\myEnableZhu > 0  \footnote{麓注: #1} \fi } % 注疏 (金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社)
+\newcommand\jiaoYL[1]{ \ifnum\myEnableJiao > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkpurple} 麓校: #1}} \fi } % 校記 (金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社)
+%\newcommand\jiaoYL[1]{ \ifnum\myEnableJiao > 0  \myfootnote{麓校: #1} \fi } % 校記 (金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社)
+\newcommand\zhuYL[1]{ \ifnum\myEnableZhu > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkpurple} 麓注: #1}} \fi } % 注疏 (金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社)
+%\newcommand\zhuMINE[1]{ \ifnum\myEnableZhu > 0  \myfootnote{麓注: #1} \fi } % 注疏 (金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社)
 
 
 \newcommand\jiaoMJinfo{梅節} \newcommand\zhuMJinfo{\jiaoMJinfo} \newcommand\piMJinfo{\jiaoMJinfo}
-\newcommand\jiaoMJ[1]{ \ifnum\myEnableJiao > 0  \footnote{{\fntfmyJiaozhu\scriptsize\linespread{0.9} \color{darkblue} 梅校: #1}} \fi } % 校記 (梅節)
-%\newcommand\jiaoMJ[1]{ \ifnum\myEnableJiao > 0  \footnote{梅校: #1} \fi } % 校記 (梅節)
+\newcommand\jiaoMJ[1]{ \ifnum\myEnableJiao > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkblue} 梅校: #1}} \fi } % 校記 (梅節)
+%\newcommand\jiaoMJ[1]{ \ifnum\myEnableJiao > 0  \myfootnote{梅校: #1} \fi } % 校記 (梅節)
 
 
 \newcommand\jiaoMINEinfo{鄙人的拙作} \newcommand\zhuMINEinfo{\jiaoMINEinfo} \newcommand\piMINEinfo{\jiaoMINEinfo}
-\newcommand\jiaoMINE[1]{ \ifnum\myEnableJiao > 0  \footnote{{\fntfmyJiaozhu\scriptsize\linespread{0.9} \color{darkgreen} 校: #1}} \fi } % 校記 (我的)
-%\newcommand\jiaoMINE[1]{ \ifnum\myEnableJiao > 0  \footnote{校: #1} \fi } % 校記 (我的)
-\newcommand\piMINE[1]{ \ifnum\myEnablePi > 0  \footnote{{\fntfmyJiaozhu\scriptsize\linespread{0.9} \color{darkgreen} 批: #1}} \fi } % 批評 (我的)
-%\newcommand\piMINE[1]{ \ifnum\myEnablePi > 0  \footnote{批: #1} \fi } % 批評 (我的)
-\newcommand\zhuMINE[1]{ \ifnum\myEnableZhu > 0  \footnote{{\fntfmyJiaozhu\scriptsize\linespread{0.9} \color{darkgreen} 注: #1}} \fi } % 注疏 (我的)
-%\newcommand\zhuMINE[1]{ \ifnum\myEnableZhu > 0  \footnote{注: #1} \fi } % 注疏 (我的)
+\newcommand\jiaoMINE[1]{ \ifnum\myEnableJiao > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkgreen} 校: #1}} \fi } % 校記 (我的)
+%\newcommand\jiaoMINE[1]{ \ifnum\myEnableJiao > 0  \myfootnote{校: #1} \fi } % 校記 (我的)
+\newcommand\piMINE[1]{ \ifnum\myEnablePi > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkgreen} 批: #1}} \fi } % 批評 (我的)
+%\newcommand\piMINE[1]{ \ifnum\myEnablePi > 0  \myfootnote{批: #1} \fi } % 批評 (我的)
+\newcommand\zhuMINE[1]{ \ifnum\myEnableZhu > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkgreen} 注: #1}} \fi } % 注疏 (我的)
+%\newcommand\zhuMINE[1]{ \ifnum\myEnableZhu > 0  \myfootnote{注: #1} \fi } % 注疏 (我的)
 
 
 
@@ -110,6 +116,7 @@
 \ifnum\myEnableJiao > 0 \renewcommand\jpmHasZhu{1} \fi
 \ifnum\myEnableZhu > 0  \renewcommand\jpmHasZhu{1} \fi
 }
+
 
 \newcommand\jpmShowZhuInfo{
 \jpmChkHasZhu
@@ -138,6 +145,27 @@
 }
 \fi
 }
+
+\ifnum\strcmp{\myfnotemode}{\detokenize{gezhu}}=0
+
+\renewcommand\jpmShowZhuInfo{
+\jpmChkHasZhu %
+%
+本精校《金瓶梅》彙集有：
+\ifnum\myEnablePi > 0
+各家批評，如张竹坡\piZhang{\piZhanginfo}　李漁　\piLiyu{\piLiyuinfo}　文龍　\piWenglong{\piWenglonginfo}　等；
+\fi
+\ifnum\myEnableJiao > 0
+各種校記，如
+    白維國\jiaoYL{\jiaoYLinfo}
+    梅節\jiaoMJ{\jiaoMJinfo}
+    我的\jiaoMINE{\jiaoMINEinfo}　等；
+\fi
+\ifnum\myEnableJiao > 0
+各式注疏，如 白維國\zhuYL{\zhuYLinfo}　等
+\fi
+}
+\fi % gezhu
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
