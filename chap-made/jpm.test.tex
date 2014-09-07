@@ -6,8 +6,8 @@
 % 以上设定默认使用 XeLaTex 编译，并指定 Unicode 编码，供 TeXShop 自动识别
 
 \commentsr{
-\chapter{测试　１　(1) test}
-
+\chapter*{测试　１　(1) test}
+\addcontentsline{toc}{chapter}{测试　１}
 
 漢字源𣴑考
 
@@ -75,7 +75,8 @@
 
 \ifnum\strcmp{\myfnotemode}{\detokenize{gezhu}}=0
 
-\chapter{测试　２　(2) test}
+\chapter*{测试　２　(2) test}
+\addcontentsline{toc}{chapter}{测试　２}
 
 (GEZHU在 chapter內)
 

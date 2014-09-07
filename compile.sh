@@ -20,7 +20,7 @@ make LTARGS="\def\usecjk{1} \def\pagewidth{8in} \def\pageheight{11in} \def\fnote
 fi
 
 rm -f test-eimd.pdf
-#make LTARGS="\def\usecjk{1} \def\pagewidth{4in} \def\pageheight{5.4in} \def\fnotemode{modern} \def\clinemode{horizontal} \def\pageorien{portrait} \def\margin{0.1in} \def\background{white}" SOURCE=test.tex TARGET=test-eimd.pdf test-eimd.pdf
+make LTARGS="\def\usecjk{1} \def\pagewidth{4in} \def\pageheight{5.4in} \def\fnotemode{modern} \def\clinemode{horizontal} \def\pageorien{portrait} \def\margin{0.1in} \def\background{white}" SOURCE=test.tex TARGET=test-eimd.pdf test-eimd.pdf
 
 rm -f test-eigz.pdf
 make LTARGS="\def\usecjk{1} \def\pagewidth{4in} \def\pageheight{5.4in} \def\fnotemode{gezhu} \def\clinemode{vertical} \def\pageorien{portrait} \def\margin{0.1in} \def\background{white}" SOURCE=test.tex TARGET=test-eigz.pdf test-eigz.pdf

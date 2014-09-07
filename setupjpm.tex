@@ -59,10 +59,11 @@
 \newcommand\myscriptsize{\tiny}
 
 
+\newcommand\mypinlunsize{\footnotesize}
 
 
 \newcommand\jiaoZhanginfo{張竹坡皋鶴堂批評第一奇書批評本。齐鲁书社　1987　年版《张竹坡批评第一奇书金瓶梅》} \newcommand\zhuZhanginfo{\jiaoZhanginfo} \newcommand\piZhanginfo{\jiaoZhanginfo}
-\newcommand\piZhangF[1]{ \ifnum\myEnablePi > 0  {\fntfmyJiaozhu \color{darkred} #1 （張竹坡皋鶴堂批評第一奇書批評本）} \fi} % 批評 (整段，張竹坡皋鶴堂批評第一奇書批評本批語)
+\newcommand\piZhangF[1]{ \ifnum\myEnablePi > 0  {\fntfmyPinlun\mypinlunsize\color{darkred} #1 （張竹坡皋鶴堂批評第一奇書批評本）} \fi} % 批評 (整段，張竹坡皋鶴堂批評第一奇書批評本批語)
 \newcommand\piZhang[1]{ \ifnum\myEnablePi > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkred} 張批: #1}} \fi } % 批評 (張竹坡皋鶴堂批評第一奇書批評本批語)
 %\newcommand\piZhang[1]{ \ifnum\myEnablePi > 0  \myfootnote{張批: #1} \fi } % 批評 (張竹坡皋鶴堂批評第一奇書批評本批語)
 
@@ -71,16 +72,16 @@
 
 
 \newcommand\jiaoLiyuinfo{李漁新刻繡像批評本} \newcommand\zhuLiyuinfo{\jiaoLiyuinfo} \newcommand\piLiyuinfo{\jiaoLiyuinfo}
-\newcommand\piLiyuF[1]{ \ifnum\myEnablePi > 0 {\fntfmyJiaozhu \color{darkblue} #1 （李漁新刻繡像批評本）} \fi} % 批評 (李漁新刻繡像批評本批語)
+\newcommand\piLiyuF[1]{ \ifnum\myEnablePi > 0 {\fntfmyPinlun\mypinlunsize\color{darkblue} #1 （李漁新刻繡像批評本）} \fi} % 批評 (李漁新刻繡像批評本批語)
 \newcommand\piLiyu[1]{ \ifnum\myEnablePi > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkblue} 繡像批: #1}} \fi } % 批評 (李漁新刻繡像批評本批語)
 %\newcommand\piLiyu[1]{ \ifnum\myEnablePi > 0  \myfootnote{繡像批: #1} \fi } % 批評 (李漁新刻繡像批評本批語)
 
 
 % 文龍（字禹門）光緒年間墨批六萬餘字。這是繼張竹坡之後，對《金瓶梅》一書的重要評論，具有珍貴的文獻價值。文龍批語分回末評、眉批、夾批等部分。
-\newcommand\jiaoWenglonginfo{文龍在茲堂本手書批評本} \newcommand\zhuWenglonginfo{\jiaoWenglonginfo} \newcommand\piWenglonginfo{\jiaoWenglonginfo}
-\newcommand\piWenglongF[1]{ \ifnum\myEnablePi > 0  {\fntfmyJiaozhu \color{darkpurple} #1 （文龍在茲堂本手書批評本）} \fi} % 批評 (文龍在茲堂本手書批評本批語)
-\newcommand\piWenglong[1]{ \ifnum\myEnablePi > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkpurple} 文龍批: #1}} \fi } % 批評 (文龍在茲堂本手書批評本批語)
-%\newcommand\piWenglong[1]{ \ifnum\myEnablePi > 0  \myfootnote{文龍批: #1} \fi } % 批評 (文龍在茲堂本手書批評本批語)
+\newcommand\jiaoWenlonginfo{文龍在茲堂本手書批評本} \newcommand\zhuWenlonginfo{\jiaoWenlonginfo} \newcommand\piWenlonginfo{\jiaoWenlonginfo. 北京圖書館藏清在茲堂刊本《金瓶梅》，上有文龍（字禹門）光緒年間墨批六萬餘字。這是繼張竹坡之後，對《金瓶梅》一書的重要評論，具有珍貴的文獻價值。文龍批語分回末評、眉批、夾批等部分。}
+\newcommand\piWenlongF[1]{ \ifnum\myEnablePi > 0  {\fntfmyPinlun\mypinlunsize\color{darkpurple} #1 （文龍在茲堂本手書批評本）} \fi} % 批評 (文龍在茲堂本手書批評本批語)
+\newcommand\piWenlong[1]{ \ifnum\myEnablePi > 0  \myfootnote{{\fntfmyJiaozhu\myscriptsize\linespread{0.9} \color{darkpurple} 文龍批: #1}} \fi } % 批評 (文龍在茲堂本手書批評本批語)
+%\newcommand\piWenlong[1]{ \ifnum\myEnablePi > 0  \myfootnote{文龍批: #1} \fi } % 批評 (文龍在茲堂本手書批評本批語)
 
 
 \newcommand\jiaoYLinfo{金瓶梅詞話校注，白維國、卜鍵　校注，嶽麓書社} \newcommand\zhuYLinfo{\jiaoYLinfo} \newcommand\piYLinfo{\jiaoYLinfo}
@@ -129,7 +130,7 @@
   \item 各家批評；
     \piZhang{\piZhanginfo}
     \piLiyu{\piLiyuinfo}
-    \piWenglong{\piWenglonginfo}
+    \piWenlong{\piWenlonginfo}
 \fi
 \ifnum\myEnableJiao > 0
   \item 各種校記；
@@ -153,7 +154,7 @@
 %
 本精校《金瓶梅》彙集有：
 \ifnum\myEnablePi > 0
-各家批評，如张竹坡\piZhang{\piZhanginfo}　李漁　\piLiyu{\piLiyuinfo}　文龍　\piWenglong{\piWenglonginfo}　等；
+各家批評，如张竹坡\piZhang{\piZhanginfo}　李漁　\piLiyu{\piLiyuinfo}　文龍　\piWenlong{\piWenlonginfo}　等；
 \fi
 \ifnum\myEnableJiao > 0
 各種校記，如
